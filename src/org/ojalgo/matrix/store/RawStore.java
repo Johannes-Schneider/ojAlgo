@@ -758,12 +758,12 @@ public final class RawStore implements PhysicalStore<Double> {
 
         double[] rowI;
 
-        int structure = data.length;
-        for (int i = 0; i < structure; i++) {
-            rowI = data[i];
+        long structure = data.length;
+        for (long i = 0; i < structure; i++) {
+            rowI = data[(int) i];
 
-            for (int j = 0; j < myNumberOfColumns; j++) {
-                rowI[j] = source.doubleValue(Structure2D.index(structure, i, j));
+            for (long j = 0; j < myNumberOfColumns; j++) {
+                rowI[(int) j] = source.doubleValue(Structure2D.index(structure, i, j));
             }
         }
     }

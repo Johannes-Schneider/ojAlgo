@@ -108,18 +108,18 @@ public final class MultiplyBoth implements ArrayOperation {
 
     static final MultiplyBoth.Primitive PRIMITIVE_1XN = (product, left, complexity, right) -> {
 
-        final int tmpColDim = (int) (right.count() / complexity);
+        final long tmpColDim = right.count() / complexity;
 
-        for (int j = 0; j < tmpColDim; j++) {
+        for (long j = 0; j < tmpColDim; j++) {
 
             double tmp0J = PrimitiveMath.ZERO;
 
-            int tmpIndex = 0;
-            for (int c = 0; c < complexity; c++) {
+            long tmpIndex = 0;
+            for (long c = 0; c < complexity; c++) {
                 tmp0J += left.doubleValue(tmpIndex++) * right.doubleValue(Structure2D.index(complexity, c, j));
             }
 
-            product.set(0, j, tmp0J);
+            product.set(0L, j, tmp0J);
         }
     };
 
